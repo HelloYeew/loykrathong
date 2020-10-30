@@ -1,9 +1,9 @@
 <template>
     <div class="selection">
-        <div v-for="krathong in krathongList" :key="krathong.name" class="choice">
+        <button v-for="krathong in krathongList" :key="krathong.name" class="choice">
             <img :src="krathong.image">
             <p>{{krathong.name}}</p>
-        </div>
+        </button>
     </div>
 </template>
 <script>
@@ -23,5 +23,16 @@ export default {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 1rem;
+    color: black;
+}
+.choice {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.33rem;
+    transition: all .4s ease-in-out;
+}
+.choice:hover, .choice:active {
+    transform: scale(1.1);
 }
 </style>

@@ -4,13 +4,13 @@
     <form @submit.prevent="submitKrathong" class="wish-form">
         <label class="label" for="wish">คำอธิฐาน</label>
         <textarea rows="4" cols="50" class="input" v-model="wish" name="wish"/>
-        <button class="select-button" @click="$modal.show('selection-modal')">เลือกกระทง</button>
+        <button class="submit-button" @click.prevent="$modal.show('selection-modal')">เลือกกระทง</button>
         <input :disabled="disabled" type="submit" class="submit-button" value="ลอยกระทง"/>
     </form>
     <div class="pool">
-      <krathong v-for="krathong in krathongQueue" :text="krathong.wish" :key="krathong.time" />
+      <krathong v-for="krathong in krathongQueue" :image="krathong.image" :text="krathong.wish" :key="krathong.time" />
     </div>
-    <modal name="selection-modal">
+    <modal name="selection-modal" width="50%">
       <krathong-modal />
     </modal>
   </div>
@@ -30,13 +30,20 @@ export default {
       wish: "",
       krathongQueue: [],
       disabled: false,
+      image: ""
+    }
+  },
+  computed: {
+    imageUrl() {
+      return this.image == "" ? undefined : this.image;
     }
   },
   methods: {
     submitKrathong() {
       this.krathongQueue.push({
         wish: this.wish,
-        time: (new Date()).getTime()
+        time: (new Date()).getTime(),
+        image: this.imageUrl,
       })
       this.disabled = true
       setTimeout(() => {
