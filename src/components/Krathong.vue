@@ -40,7 +40,7 @@ export default {
 
 @keyframes float {
     0% {
-        left: 200%;
+        left: 100%;
     }
     100% {
         left: -200%;
