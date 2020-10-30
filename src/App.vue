@@ -2,7 +2,7 @@
   <div id="app">
     <h1>ลอยกระทง Simple </h1>
     <form @submit.prevent="submitKrathong" class="wish-form">
-        <label class="label" for="wish">คำอธิฐาน</label>
+        <label class="label" for="wish">คำอธิษฐาน</label>
         <textarea rows="4" cols="50" class="input" v-model="wish" name="wish"/>
         <button class="form-button" @click.prevent="$modal.show('selection-modal')">เลือกกระทง</button>
         <input :disabled="disabled" type="submit" class="form-button" value="ลอยกระทง"/>
