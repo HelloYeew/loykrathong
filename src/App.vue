@@ -55,5 +55,6 @@ body {
 }
 .input {
   margin-top: 1rem;
+  width: 50ch;
 }
 </style>
