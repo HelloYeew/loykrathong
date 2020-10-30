@@ -3,7 +3,7 @@
     <h1>ลอยกระทง Simple </h1>
     <form @submit.prevent="submitKrathong" class="wish-form">
         <label class="label" for="wish">คำอธิฐาน</label>
-        <textarea class="input" v-model="wish" name="wish"/>
+        <textarea rows="4" cols="50" class="input" v-model="wish" name="wish"/>
         <input :disabled="disabled" type="submit" class="submit-button" value="ลอยกระทง"/>
     </form>
     <div class="pool">
@@ -78,6 +78,5 @@ body {
 }
 .input {
   margin-top: 1rem;
-  width: 50ch;
 }
 </style>
