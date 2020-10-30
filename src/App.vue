@@ -55,6 +55,7 @@ export default {
     },
     handleSelect(image) {
       this.image = image
+      this.$modal.hide('selection-modal')
     }
   }
 }
