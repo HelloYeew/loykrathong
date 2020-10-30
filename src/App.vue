@@ -36,6 +36,9 @@ export default {
       setTimeout(() => {
         this.disabled = false
       }, 500)
+      setTimeout(() => {
+        this.krathongQueue.unshift()
+      }, 10000)
     }
   }
 }
