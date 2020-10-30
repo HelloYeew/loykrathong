@@ -4,7 +4,7 @@
     <form @submit.prevent="submitKrathong" class="wish-form">
         <label class="label" for="wish">คำอธิฐาน</label>
         <textarea class="input" v-model="wish" name="wish"/>
-      <input type="submit" class="submit-button" value="ลอยกระทง"/>
+        <input :disabled="disabled" type="submit" class="submit-button" value="ลอยกระทง"/>
     </form>
     <div class="pool">
       <krathong v-for="krathong in krathongQueue" :text="krathong.wish" :key="krathong.time" />
@@ -23,6 +23,7 @@ export default {
     return {
       wish: "",
       krathongQueue: [],
+      disabled: false,
     }
   },
   methods: {
@@ -31,6 +32,10 @@ export default {
         wish: this.wish,
         time: (new Date()).getTime()
       })
+      this.disabled = true
+      setTimeout(() => {
+        this.disabled = false
+      }, 500)
     }
   }
 }
@@ -60,6 +65,9 @@ body {
   color: black;
   border: 1px solid aliceblue;
   padding: .33rem;
+}
+.submit-button:disabled {
+  color: gray;
 }
 .wish-form {
   width: 80%;
