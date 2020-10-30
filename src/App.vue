@@ -3,7 +3,7 @@
     <h1>ลอยกระทง Simple </h1>
     <form class="wish-form">
         <label class="label" for="wish">คำอธิฐาน</label>
-        <input class="input" v-model="wish" name="wish"/>
+        <textarea class="input" v-model="wish" name="wish"/>
       <input type="submit" class="submit-button" value="ลอยกระทง"/>
     </form>
   </div>
@@ -22,11 +22,14 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Athiti:wght@400;600&display=swap');
+html, body {
+  font-family: "Athiti", sans-serif;
+}
 body {
   background: #141852; /* This is from https://www.schemecolor.com/night-sky-color-palette.php */
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
