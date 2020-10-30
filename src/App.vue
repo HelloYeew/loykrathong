@@ -4,14 +4,14 @@
     <form @submit.prevent="submitKrathong" class="wish-form">
         <label class="label" for="wish">คำอธิฐาน</label>
         <textarea rows="4" cols="50" class="input" v-model="wish" name="wish"/>
-        <button class="submit-button" @click.prevent="$modal.show('selection-modal')">เลือกกระทง</button>
-        <input :disabled="disabled" type="submit" class="submit-button" value="ลอยกระทง"/>
+        <button class="form-button" @click.prevent="$modal.show('selection-modal')">เลือกกระทง</button>
+        <input :disabled="disabled" type="submit" class="form-button" value="ลอยกระทง"/>
     </form>
     <div class="pool">
       <krathong v-for="krathong in krathongQueue" :image="krathong.image" :text="krathong.wish" :key="krathong.time" />
     </div>
     <modal name="selection-modal" width="50%">
-      <krathong-modal />
+      <krathong-modal :handleSelect="handleSelect"/>
     </modal>
   </div>
 </template>
@@ -52,6 +52,9 @@ export default {
       setTimeout(() => {
         this.krathongQueue.unshift()
       }, 10000)
+    },
+    handleSelect(image) {
+      this.image = image
     }
   }
 }
@@ -73,7 +76,7 @@ body {
   padding: 1rem;
   height: 100%;
 }
-.submit-button {
+.form-button {
   display: block;
   margin: auto;
   margin-top: 1rem;
@@ -82,7 +85,7 @@ body {
   border: 1px solid aliceblue;
   padding: .33rem;
 }
-.submit-button:disabled {
+.form-button:disabled {
   color: gray;
 }
 .wish-form {

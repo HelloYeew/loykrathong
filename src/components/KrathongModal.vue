@@ -1,6 +1,6 @@
 <template>
     <div class="selection">
-        <button v-for="krathong in krathongList" :key="krathong.name" class="choice">
+        <button @click="handleSelect(krathong.image)" v-for="krathong in krathongList" :key="krathong.name" class="choice">
             <img :src="krathong.image">
             <p>{{krathong.name}}</p>
         </button>
@@ -10,6 +10,9 @@
 import krathongList from '../krathongList'
 export default {
     name: "KrathongModal",
+    props: {
+        handleSelect: Function
+    },
     data() {
         return {
             krathongList
