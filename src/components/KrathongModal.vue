@@ -1,7 +1,7 @@
 <template>
     <div class="selection">
         <button @click="handleSelect(krathong.image)" v-for="krathong in krathongList" :key="krathong.name" class="choice">
-            <img :src="krathong.image">
+            <img class="choice-image" :src="krathong.image">
             <p>{{krathong.name}}</p>
         </button>
     </div>
@@ -37,5 +37,9 @@ export default {
 }
 .choice:hover, .choice:active {
     transform: scale(1.1);
+}
+.choice-image {
+    width: 100%;
+    height: auto;
 }
 </style>
