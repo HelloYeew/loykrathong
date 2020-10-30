@@ -1,21 +1,36 @@
 <template>
   <div id="app">
     <h1>ลอยกระทง Simple </h1>
-    <form class="wish-form">
+    <form @submit.prevent="submitKrathong" class="wish-form">
         <label class="label" for="wish">คำอธิฐาน</label>
         <textarea class="input" v-model="wish" name="wish"/>
       <input type="submit" class="submit-button" value="ลอยกระทง"/>
     </form>
+    <div class="pool">
+      <krathong v-for="krathong in krathongQueue" :text="krathong.wish" :key="krathong.time" />
+    </div>
   </div>
 </template>
 
 <script>
+import Krathong from './components/Krathong.vue';
 export default {
   name: 'App',
+  components: {
+    Krathong
+  },
   data() {
     return {
       wish: "",
       krathongQueue: [],
+    }
+  },
+  methods: {
+    submitKrathong() {
+      this.krathongQueue.push({
+        wish: this.wish,
+        time: (new Date()).getTime()
+      })
     }
   }
 }
