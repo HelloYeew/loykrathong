@@ -4,20 +4,26 @@
     <form @submit.prevent="submitKrathong" class="wish-form">
         <label class="label" for="wish">คำอธิฐาน</label>
         <textarea rows="4" cols="50" class="input" v-model="wish" name="wish"/>
+        <button class="select-button" @click="$modal.show('selection-modal')">เลือกกระทง</button>
         <input :disabled="disabled" type="submit" class="submit-button" value="ลอยกระทง"/>
     </form>
     <div class="pool">
       <krathong v-for="krathong in krathongQueue" :text="krathong.wish" :key="krathong.time" />
     </div>
+    <modal name="selection-modal">
+      <krathong-modal />
+    </modal>
   </div>
 </template>
 
 <script>
 import Krathong from './components/Krathong.vue';
+import KrathongModal from './components/KrathongModal.vue';
 export default {
   name: 'App',
   components: {
-    Krathong
+    Krathong,
+    KrathongModal
   },
   data() {
     return {
