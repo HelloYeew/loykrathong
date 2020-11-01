@@ -68,6 +68,7 @@ html, body {
 }
 body {
   background: #141852; /* This is from https://www.schemecolor.com/night-sky-color-palette.php */
+  overflow-x: hidden;
 }
 #app {
   -webkit-font-smoothing: antialiased;
@@ -86,6 +87,11 @@ body {
   font-weight: bold;
   border: 1px solid rgba(255, 255 ,255, 0.33);
   padding: .33rem;
+  cursor: pointer;
+}
+.form-button:active, .form-button:hover {
+  background: #CAE00F;
+  color: rgb(44, 44, 44);
 }
 .form-button:disabled {
   color: gray;
