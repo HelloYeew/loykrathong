@@ -27,7 +27,7 @@ export default {
 <style scoped>
 .krathong {
     position: absolute;
-    max-width: 320px;
+    width: 320px;
     /* Please don't do this in production. */
     left: 200%;
     top: 50%;
@@ -37,6 +37,7 @@ export default {
 
 .krathong-image, .krathong-text {
     width: 100%;
+    height: auto;
 }
 
 @keyframes float {
