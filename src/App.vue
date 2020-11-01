@@ -3,7 +3,7 @@
     <h1>ลอยกระทง Simple </h1>
     <form @submit.prevent="submitKrathong" class="wish-form">
         <label class="label" for="wish">คำอธิษฐาน</label>
-        <textarea rows="4" cols="50" class="input" v-model="wish" name="wish"/>
+        <textarea rows="4" cols="30" class="input" v-model="wish" name="wish"/>
         <button class="form-button" @click.prevent="$modal.show('selection-modal')">เลือกกระทง</button>
         <input :disabled="disabled" type="submit" class="form-button" value="ลอยกระทง"/>
     </form>
@@ -81,9 +81,10 @@ body {
   display: block;
   margin: auto;
   margin-top: 1rem;
-  background: white;
-  color: black;
-  border: 1px solid aliceblue;
+  background:#02326E;
+  color: white;
+  font-weight: bold;
+  border: 1px solid rgba(255, 255 ,255, 0.33);
   padding: .33rem;
 }
 .form-button:disabled {
