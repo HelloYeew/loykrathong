@@ -5,13 +5,14 @@
         <label class="label" for="wish">คำอธิษฐาน</label>
         <textarea rows="4" cols="30" class="input" v-model="wish" name="wish"/>
         <button class="form-button" @click.prevent="$modal.show('selection-modal')">เลือกกระทง</button>
+        <span>{{ krathongName }}</span>
         <input :disabled="disabled" type="submit" class="form-button" value="ลอยกระทง"/>
     </form>
     <div class="pool">
       <krathong v-for="krathong in krathongQueue" :image="krathong.image" :text="krathong.wish" :key="krathong.time" />
     </div>
     <modal name="selection-modal" width="50%">
-      <krathong-modal :handleSelect="handleSelect"/>
+      <krathong-modal :krathongList="krathongList" :handleSelect="handleSelect"/>
     </modal>
   </div>
 </template>
@@ -19,6 +20,7 @@
 <script>
 import Krathong from './components/Krathong.vue';
 import KrathongModal from './components/KrathongModal.vue';
+import krathongList from './krathongList';
 export default {
   name: 'App',
   components: {
@@ -30,7 +32,9 @@ export default {
       wish: "",
       krathongQueue: [],
       disabled: false,
-      image: ""
+      image: "",
+      krathongList,
+      krathongName: ""
     }
   },
   computed: {
@@ -53,8 +57,9 @@ export default {
         this.krathongQueue.unshift()
       }, 10000)
     },
-    handleSelect(image) {
-      this.image = image
+    handleSelect(krathong) {
+      this.image = krathong.image
+      this.krathongName = krathong.name
       this.$modal.hide('selection-modal')
     }
   }

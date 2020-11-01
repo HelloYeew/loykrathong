@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import krathongList from '../krathongList';
 export default {
     name: "Krathong",
     props: {
@@ -16,7 +17,7 @@ export default {
             type: String
         },
         image:{
-            default: "https://loremflickr.com/320/240",
+            default: krathongList[0].image,
             type: String
         }
     }
