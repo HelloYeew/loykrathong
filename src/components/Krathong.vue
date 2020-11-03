@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import krathongList from '../krathongList';
 export default {
     name: "Krathong",
     props: {
@@ -16,7 +17,7 @@ export default {
             type: String
         },
         image:{
-            default: "https://loremflickr.com/320/240",
+            default: krathongList[0].image,
             type: String
         }
     }
@@ -26,7 +27,7 @@ export default {
 <style scoped>
 .krathong {
     position: absolute;
-    max-width: 320px;
+    width: 320px;
     /* Please don't do this in production. */
     left: 200%;
     top: 50%;
@@ -36,6 +37,7 @@ export default {
 
 .krathong-image, .krathong-text {
     width: 100%;
+    height: auto;
 }
 
 @keyframes float {

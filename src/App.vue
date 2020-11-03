@@ -3,15 +3,16 @@
     <h1>ลอยกระทง Simple </h1>
     <form @submit.prevent="submitKrathong" class="wish-form">
         <label class="label" for="wish">คำอธิษฐาน</label>
-        <textarea rows="4" cols="50" class="input" v-model="wish" name="wish"/>
+        <textarea rows="4" cols="30" class="input" v-model="wish" name="wish"/>
         <button class="form-button" @click.prevent="$modal.show('selection-modal')">เลือกกระทง</button>
+        <span>{{ krathongName }}</span>
         <input :disabled="disabled" type="submit" class="form-button" value="ลอยกระทง"/>
     </form>
     <div class="pool">
       <krathong v-for="krathong in krathongQueue" :image="krathong.image" :text="krathong.wish" :key="krathong.time" />
     </div>
     <modal name="selection-modal" width="50%">
-      <krathong-modal :handleSelect="handleSelect"/>
+      <krathong-modal :krathongList="krathongList" :handleSelect="handleSelect"/>
     </modal>
   </div>
 </template>
@@ -19,6 +20,7 @@
 <script>
 import Krathong from './components/Krathong.vue';
 import KrathongModal from './components/KrathongModal.vue';
+import krathongList from './krathongList';
 export default {
   name: 'App',
   components: {
@@ -30,7 +32,9 @@ export default {
       wish: "",
       krathongQueue: [],
       disabled: false,
-      image: ""
+      image: "",
+      krathongList,
+      krathongName: ""
     }
   },
   computed: {
@@ -53,8 +57,9 @@ export default {
         this.krathongQueue.unshift()
       }, 10000)
     },
-    handleSelect(image) {
-      this.image = image
+    handleSelect(krathong) {
+      this.image = krathong.image
+      this.krathongName = krathong.name
       this.$modal.hide('selection-modal')
     }
   }
@@ -68,6 +73,7 @@ html, body {
 }
 body {
   background: #141852; /* This is from https://www.schemecolor.com/night-sky-color-palette.php */
+  overflow-x: hidden;
 }
 #app {
   -webkit-font-smoothing: antialiased;
@@ -81,10 +87,16 @@ body {
   display: block;
   margin: auto;
   margin-top: 1rem;
-  background: white;
-  color: black;
-  border: 1px solid aliceblue;
+  background:#02326E;
+  color: white;
+  font-weight: bold;
+  border: 1px solid rgba(255, 255 ,255, 0.33);
   padding: .33rem;
+  cursor: pointer;
+}
+.form-button:active, .form-button:hover {
+  background: #CAE00F;
+  color: rgb(44, 44, 44);
 }
 .form-button:disabled {
   color: gray;
